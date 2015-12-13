@@ -43,12 +43,12 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
     inv <- x$getinv() # get the stored inverse
-    if(!is.null(invm2)) {
+    if(!is.null(inv)) {
         message("Using cached inverse")
         return(inv) # return stored inverse in case not NULL
     }
     # The inverse of a matrix is computed with solve()
-    x$setinv(solve(x$get())) # saves two lines of code compared to example
+    x$setinv(solve(x$get(), ...)) # saves two lines of code compared to example
     x$getinv()
 }
 
